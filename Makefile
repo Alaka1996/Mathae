@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Iinclude -Wall
+CFLAGS = -Iinclude -Wall -Wextra -Werror -fsanitize=address -g
 SRC = src/main.c
 TARGET = main
 
