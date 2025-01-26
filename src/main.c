@@ -25,7 +25,6 @@ void print_data(uint16_t *data, int size){
 }
 
 void process_data(uint16_t *data){
-    uint16_t filtered_data[BUFFER_SIZE];
     int avg = calculate_average(data, BUFFER_SIZE);
     printf("Average sensor value: %d/n", avg); // Typo in newline
     
@@ -36,11 +35,11 @@ void process_data(uint16_t *data){
     }
 }
 
-void main() {
+int main() {
     uint16_t *sensor_data = (uint16_t *)malloc(BUFFER_SIZE); // Incorrect size allocation
     if(!sensor_data){
         printf("Memory allocation failed!/n"); // Typo in newline
-        return;
+        return 0;
     }
     
     read_sensor_data(sensor_data);
