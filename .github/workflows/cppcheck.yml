@@ -20,7 +20,10 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Install dependencies
-      run: sudo apt-get install -y cmake build-essential
+      run: sudo apt-get install -y cmake build-essential cppcheck
+
+    - name: Run static analysis (CppCheck)
+      run: cppcheck --enable=all --inconclusive --xml --xml-version=2 src include
 
     - name: Build the application
       run: make
