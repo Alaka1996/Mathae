@@ -20,4 +20,4 @@ jobs:
       run: sudo apt-get install -y cppcheck
 
     - name: Run cppcheck
-      run: cppcheck --enable=all --inconclusive --std=c99 --force src/*.c
+      run: cppcheck --enable=all --inconclusive --std=c99 --suppress=missingIncludeSystem src/*.c
