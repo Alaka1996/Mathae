@@ -31,6 +31,20 @@ test: $(TEST_OBJ)
 run-tests: test
 	./$(TEST_TARGET)
 
+# Static Code Analysis (CppCheck)
+cppcheck:
+	# Run cppcheck on the src and include directories
+	# --enable=all: Enable all checks
+	# --inconclusive: Allows inconclusive results
+	# --xml: Outputs results in XML format
+	# --xml-version=2: Specifies XML version
+	# --quiet: Suppresses most non-error output
+	# --error-exitcode=1: Make cppcheck fail the build if it finds errors
+	cppcheck --enable=all --inconclusive --xml --xml-version=2 --quiet --error-exitcode=1 src include
+
+# Run the Static Analysis before the Build (Optional)
+check: cppcheck
+
 # Clean Build Artifacts
 clean:
 	rm -f $(OBJ) $(TARGET) $(TEST_OBJ) $(TEST_TARGET)
